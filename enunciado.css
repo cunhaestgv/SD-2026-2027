@@ -1,0 +1,425 @@
+/* ------------------------------------------------------------------
+   Enunciado — folha de estilo minimalista
+   Sistemas Distribuídos · ESTV
+   ------------------------------------------------------------------ */
+
+/* --- Tokens (tema claro) ---------------------------------------- */
+:root {
+  --bg:            #fbfbfa;
+  --surface:       #ffffff;
+  --surface-soft:  #f4f4f2;
+  --ink:           #1c1c1a;
+  --ink-soft:      #55554f;
+  --ink-faint:     #8a8a82;
+  --line:          #e3e3de;
+  --line-strong:   #cfcfc8;
+  --accent:        #1f6f5c;
+  --accent-soft:   #e8f2ef;
+  --accent-ink:    #14503f;
+  --warn:          #8a6a1f;
+  --warn-soft:     #fbf3e0;
+
+  --radius:        10px;
+  --measure:       74ch;
+
+  --font-text:     ui-sans-serif, -apple-system, "Segoe UI", Roboto,
+                   "Helvetica Neue", Arial, sans-serif;
+  --font-mono:     ui-monospace, SFMono-Regular, "SF Mono", Menlo,
+                   Consolas, "Liberation Mono", monospace;
+}
+
+/* --- Tokens (tema escuro) --------------------------------------- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:           #16171a;
+    --surface:      #1d1e22;
+    --surface-soft: #24262b;
+    --ink:          #e7e7e3;
+    --ink-soft:     #b3b3ad;
+    --ink-faint:    #85857e;
+    --line:         #2e3036;
+    --line-strong:  #3d4048;
+    --accent:       #5cc0a4;
+    --accent-soft:  #1a2b28;
+    --accent-ink:   #8fd8c1;
+    --warn:         #d9b45f;
+    --warn-soft:    #2b2519;
+  }
+}
+
+/* --- Base -------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  padding: clamp(1.5rem, 4vw, 4rem) clamp(1rem, 5vw, 2rem) 6rem;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-text);
+  font-size: 17px;
+  line-height: 1.7;
+  letter-spacing: 0.005em;
+  -webkit-font-smoothing: antialiased;
+}
+
+main {
+  max-width: var(--measure);
+  margin-inline: auto;
+}
+
+/* --- Cabeçalho --------------------------------------------------- */
+.brand {
+  margin: 0 0 1.75rem;
+}
+
+.brand img {
+  display: block;
+  width: 106px;
+  height: auto;
+}
+
+/* O logótipo tem lettering escuro sobre fundo transparente: em tema
+   escuro assenta numa placa clara para se manter legível. */
+@media (prefers-color-scheme: dark) {
+  .brand img {
+    width: 106px;
+    padding: 0.45rem 0.6rem;
+    background: #ffffff;
+    border-radius: 8px;
+    box-sizing: content-box;
+  }
+}
+
+.eyebrow {
+  margin: 0 0 0.6rem;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+h1 {
+  margin: 0 0 0.6rem;
+  font-size: clamp(1.7rem, 4.5vw, 2.35rem);
+  font-weight: 650;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.lead {
+  margin: 0 0 1.2rem;
+  font-size: 1.06rem;
+  color: var(--ink-soft);
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.5rem;
+  margin: 0 0 2.5rem;
+  padding: 0 0 2rem;
+  border-bottom: 1px solid var(--line);
+  list-style: none;
+}
+
+.meta li {
+  padding: 0.18rem 0.6rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+
+/* --- Títulos ----------------------------------------------------- */
+h2 {
+  margin: 3.2rem 0 1rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid var(--line);
+  font-size: 1.35rem;
+  font-weight: 640;
+  letter-spacing: -0.01em;
+}
+
+h2:first-of-type { border-top: 0; padding-top: 0; }
+
+h3 {
+  margin: 2rem 0 0.6rem;
+  font-size: 1.02rem;
+  font-weight: 640;
+  color: var(--ink);
+}
+
+h4 {
+  margin: 1.4rem 0 0.4rem;
+  font-size: 0.95rem;
+  font-weight: 620;
+  color: var(--ink-soft);
+}
+
+/* --- Texto corrente ---------------------------------------------- */
+p { margin: 0 0 1.05rem; }
+
+strong { font-weight: 640; }
+
+em { color: inherit; }
+
+a {
+  color: var(--accent);
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+}
+
+hr {
+  height: 0;
+  margin: 3rem 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+}
+
+/* --- Listas ------------------------------------------------------ */
+ul, ol {
+  margin: 0 0 1.15rem;
+  padding-left: 1.35rem;
+}
+
+li { margin-bottom: 0.5rem; }
+
+li > ul, li > ol { margin-top: 0.5rem; }
+
+ol { counter-reset: none; }
+
+ul li::marker { color: var(--accent); }
+
+ol li::marker {
+  color: var(--ink-faint);
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+/* --- Código ------------------------------------------------------ */
+pre {
+  margin: 0 0 1.4rem;
+  padding: 1.05rem 1.15rem;
+  overflow-x: auto;
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: 0.845rem;
+  line-height: 1.6;
+  tab-size: 2;
+}
+
+pre code {
+  padding: 0;
+  background: none;
+  border: 0;
+  font-size: inherit;
+  color: inherit;
+}
+
+code {
+  padding: 0.12em 0.38em;
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  font-family: var(--font-mono);
+  font-size: 0.86em;
+  color: var(--accent-ink);
+}
+
+/* Formatos de mensagem do protocolo, em destaque discreto */
+pre.format {
+  display: inline-block;
+  padding: 0.55rem 0.9rem;
+  background: var(--accent-soft);
+  border-color: transparent;
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  color: var(--accent-ink);
+  font-weight: 600;
+}
+
+/* --- Blocos temáticos -------------------------------------------- */
+.card {
+  margin: 0 0 1.2rem;
+  padding: 1.1rem 1.3rem 0.6rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.card > h3 { margin-top: 0; }
+
+.card > h3 .tag { margin-right: 0.5rem; }
+
+.card > :last-child { margin-bottom: 0.5rem; }
+
+/* Lista compacta de critérios: etiqueta + uma frase por linha */
+.card > ol > li { margin-bottom: 0.75rem; }
+
+.card > ol > li .tag { margin-right: 0.3rem; }
+
+.tag {
+  display: inline-block;
+  padding: 0.1rem 0.45rem;
+  background: var(--accent-soft);
+  border-radius: 5px;
+  color: var(--accent-ink);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  vertical-align: 0.08em;
+}
+
+.note {
+  margin: 1.4rem 0;
+  padding: 0.9rem 1.1rem;
+  background: var(--warn-soft);
+  border-left: 3px solid var(--warn);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+.note p:last-child { margin-bottom: 0; }
+
+.check {
+  margin: 0.6rem 0 0;
+  padding: 0.7rem 0.95rem;
+  background: var(--surface-soft);
+  border-radius: var(--radius);
+  color: var(--ink-soft);
+  font-size: 0.93rem;
+}
+
+.check p:last-child { margin-bottom: 0; }
+
+.check::before {
+  content: "Antes de avançar";
+  display: block;
+  margin-bottom: 0.25rem;
+  color: var(--ink-faint);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.optional {
+  color: var(--ink-faint);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* --- Bloco do prompt --------------------------------------------- */
+.prompt {
+  margin: 1.4rem 0 1.8rem;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.prompt header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.6rem 1.1rem;
+  background: var(--surface-soft);
+  border-bottom: 1px solid var(--line);
+  color: var(--ink-faint);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.prompt pre {
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: var(--surface);
+  white-space: pre-wrap;
+  font-size: 0.83rem;
+}
+
+/* --- Diagramas (Mermaid) ------------------------------------------ */
+figure.diagram {
+  margin: 1.6rem 0 1.9rem;
+}
+
+/* Antes de renderizar, o bloco herda o aspeto de código: se o script
+   não carregar, o aluno continua a ver o diagrama em texto. */
+figure.diagram pre.mermaid {
+  margin: 0;
+  text-align: center;
+}
+
+pre.mermaid[data-processed] {
+  padding: 0.5rem 0;
+  background: none;
+  border: 0;
+  overflow-x: auto;
+}
+
+pre.mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+
+figure.diagram figcaption {
+  margin-top: 0.7rem;
+  color: var(--ink-faint);
+  font-size: 0.84rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* --- Tabelas ------------------------------------------------------ */
+.table-wrap { overflow-x: auto; margin: 0 0 1.4rem; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+th, td {
+  padding: 0.55rem 0.7rem;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  color: var(--ink-faint);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* --- Rodapé ------------------------------------------------------- */
+footer {
+  max-width: var(--measure);
+  margin: 4rem auto 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+  color: var(--ink-faint);
+  font-size: 0.84rem;
+}
+
+/* --- Impressão ---------------------------------------------------- */
+@media print {
+  body { background: #fff; color: #000; font-size: 11pt; padding: 0; }
+  .card, pre, .note, .check, .prompt, figure.diagram { break-inside: avoid; }
+  h2, h3 { break-after: avoid; }
+  footer { display: none; }
+}
