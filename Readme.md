@@ -91,20 +91,22 @@ upstream  https://github.com/cunhaestgv/SD-2026-2027.git (push)
 
 Repete esta sequência **sempre que iniciares uma nova tarefa**.
 
-### Passo A — Atualizar a branch principal (`main`)
+<img width="1472" height="1312" alt="image" src="https://github.com/user-attachments/assets/6f4712f2-400a-49ff-ba28-c9f93e3dfeff" />
+
+### Passo A — Atualizar a branch principal (`master`)
 
 Antes de começar, garante que tens a versão mais recente publicada pelo docente:
 
 ```bash
-git checkout main
+git checkout master
 git fetch upstream
-git merge upstream/main
-git push origin main
+git merge upstream/master
+git push origin master
 ```
 
 ### Passo B — Criar uma branch para a tarefa
 
-Nunca trabalhes diretamente na `main`. Cria uma branch nova por cada exercício:
+Nunca trabalhes diretamente na `master`. Cria uma branch nova por cada exercício:
 
 ```bash
 git checkout -b tarefa-1
@@ -133,7 +135,7 @@ git push origin tarefa-1
 1. Acede à página do **teu fork** no GitHub.
 2. Clica no botão **Compare & pull request** que aparece relativo à branch enviada (`tarefa-1`).
 3. Confirma a direção do PR:
-   - **base repository:** `cunhaestgv/SD-2026-2027` · **base:** `main`
+   - **base repository:** `cunhaestgv/SD-2026-2027` · **base:** `master`
    - **head repository:** `O-TEU-UTILIZADOR/SD-2026-2027` · **compare:** `tarefa-1`
 4. Dá um título claro ao PR (ex.: `Tarefa UDP001`) e descreve brevemente o que foi feito.
 5. Clica em **Create pull request** e aguarda a revisão do docente.
@@ -146,18 +148,18 @@ git push origin tarefa-1
 
 1. **Revisão:** o docente avalia o Pull Request na aula, durante a apresentação.
 2. **Merge:** quando o trabalho é aprovado, o docente aceita (*merge*) as alterações e/ou publica novas tarefas no repositório central (`upstream`).
-3. **Sincronização:** depois do *merge*, volta à `main`, sincroniza com as novidades e elimina a branch já concluída:
+3. **Sincronização:** depois do *merge*, volta à `master`, sincroniza com as novidades e elimina a branch já concluída:
 
 ```bash
-# Voltar à branch main
-git checkout main
+# Voltar à branch master
+git checkout master
 
 # Obter e aplicar as novas tarefas/atualizações do docente
 git fetch upstream
-git merge upstream/main
+git merge upstream/master
 
 # Atualizar o teu fork no GitHub
-git push origin main
+git push origin master
 
 # (Opcional) Eliminar a branch da tarefa já concluída
 git branch -d tarefa-1              # local
@@ -169,11 +171,11 @@ git push origin --delete tarefa-1   # no teu fork do GitHub
 ## 4. Exemplo prático completo (Tarefa 2)
 
 ```bash
-# 1. Garantir que a main está atualizada
-git checkout main
+# 1. Garantir que a master está atualizada
+git checkout master
 git fetch upstream
-git merge upstream/main
-git push origin main
+git merge upstream/master
+git push origin master
 
 # 2. Criar a branch da Tarefa 2
 git checkout -b tarefa-2
@@ -201,26 +203,26 @@ git push origin tarefa-2
 | Criar e mudar para uma branch                   | `git checkout -b nome-da-branch` |
 | Ver alterações ainda não preparadas             | `git diff` |
 | Descartar alterações num ficheiro               | `git restore ficheiro.txt` |
-| Obter novos ficheiros do respositório do docente | `git fetch upstream && git merge upstream/main` |
+| Obter novos ficheiros do respositório do docente | `git fetch upstream && git merge upstream/master` |
 
 ---
 
 ## 6. Problemas frequentes
 
 <details>
-<summary><strong>Fiz commits na branch <code>main</code> por engano</strong></summary>
+<summary><strong>Fiz commits na branch <code>master</code> por engano</strong></summary>
 
 Move o trabalho para uma branch nova (ainda não foi feito *push*):
 
 ```bash
 git checkout -b tarefa-1     # leva os commits para a nova branch
-git checkout main
-git reset --hard upstream/main   # limpa a main (perde alterações não commitadas!)
+git checkout master
+git reset --hard upstream/master   # limpa a master (perde alterações não commitadas!)
 ```
 </details>
 
 <details>
-<summary><strong>Aparecem conflitos no <code>git merge upstream/main</code></strong></summary>
+<summary><strong>Aparecem conflitos no <code>git merge upstream/master</code></strong></summary>
 
 O Git indica os ficheiros em conflito. Abre cada um, procura os marcadores `<<<<<<<`, `=======` e `>>>>>>>`, escolhe a versão correta, apaga os marcadores e depois:
 
@@ -251,22 +253,22 @@ Vai ao separador **Pull requests** do repositório do docente → **New pull req
 <details>
 <summary><strong>Enviei o PR para o sítio errado</strong></summary>
 
-Fecha o Pull Request e abre um novo, confirmando que **base repository** é `cunhaestgv/SD-2026-2027` e **base** é `main`.
+Fecha o Pull Request e abre um novo, confirmando que **base repository** é `cunhaestgv/SD-2026-2027` e **base** é `master`.
 </details>
 
 <details>
 <summary><strong>O meu fork está muito desatualizado</strong></summary>
 
-Na página do teu fork no GitHub, clica em **Sync fork** → **Update branch**. Depois, localmente: `git checkout main && git pull origin main`.
+Na página do teu fork no GitHub, clica em **Sync fork** → **Update branch**. Depois, localmente: `git checkout master && git pull origin master`.
 </details>
 
 ---
 
 ## 7. Regras de ouro
 
-1. ✅ Uma **branch por tarefa** — nunca trabalhar diretamente na `main`.
-2. ✅ **Atualizar a `main`** (`fetch` + `merge upstream/main`) antes de criar cada branch nova.
+1. ✅ Uma **branch por tarefa** — nunca trabalhar diretamente na `master`.
+2. ✅ **Atualizar a `master`** (`fetch` + `merge upstream/master`) antes de criar cada branch nova.
 3. ✅ **Commits** com mensagens descritivas.
 4. ✅ Fazer **push antes da aula** — o PR tem de estar aberto no momento da apresentação.
-5. ❌ Nunca fazer `git push --force` para a `main`.
+5. ❌ Nunca fazer `git push --force` para a `master`.
 6. ❌ Não submeter binários, executáveis nem pastas de configuração do IDE.
