@@ -20,10 +20,10 @@ Este repositório contém os exercícios e tarefas da disciplina. Segue este gui
 ## 0. Pré-requisitos
 
 - **Conta no GitHub** ([criar aqui](https://github.com/signup)).
-- **Git instalado** ([download](https://git-scm.com/downloads)). Verifica com `git --version`.
 
-**Se NÃO for utilizado o IntelliJ podem ser seguidos os passos seguintes para configurar o repositório Git em linha de comando**
+Se NÃO for utilizado o IntelliJ podem ser seguidos os passos seguintes para configurar o repositório Git em linha de comando:
 - **Identidade configurada** (só é preciso fazer uma vez por computador):
+- **Git instalado** ([download](https://git-scm.com/downloads)). Verifica com `git --version`.
 
   ```bash
   git config --global user.name "O Teu Nome"
