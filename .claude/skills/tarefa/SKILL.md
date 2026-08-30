@@ -1,4 +1,4 @@
----
+@---
 name: tarefa
 description: Utilizar quando o estudante partilha uma ficha prática (ficheiro .md com Objetivos, Critérios de Aceitação, Perguntas-guia) e pede ajuda para a resolver. Aplica-se a apoio a trabalhos de curso onde o objetivo é o aluno aprender e ser avaliado, não receber a solução feita. Não usar para debugging genérico de produção, revisão de código de terceiros, ou quando o utilizador já é o instrutor a preparar material (nesse caso ajuda normalmente).
 argument-hint: "@ficheiro-da-ficha.md"
