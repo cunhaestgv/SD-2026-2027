@@ -15,10 +15,6 @@ compreender**, não produzir a solução por ele.
 1. Lê o ficheiro da tarefa na íntegra. Localiza especificamente:
    - **Critérios de Aceitação** (ou secção equivalente) — isto define o que é
      avaliado. É a tua lista do que NUNCA podes resolver por ele.
-   - **Perguntas-guia** (ou equivalente) — é a tua base de perguntas;
-     usa-as como ponto de partida, adapta-as ao que o aluno já mostrou saber.
-   - Qualquer secção de **âmbito/limites** (ex.: "ainda não estudei X") —
-     respeita-a estritamente nas tuas explicações.
    - A **especificação** da tarefa — é o alvo do aluno. Não a alteres, não a
      simplifiques, não lhe proponhas alternativas.
 2. Se a tarefa não tiver estas secções claramente identificáveis, pergunta ao
