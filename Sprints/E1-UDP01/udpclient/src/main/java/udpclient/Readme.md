@@ -29,7 +29,6 @@ Assim que o programa inicia, ele pede para escolher o **Modo de Numeração**:
 
 ### Comandos Especiais
 * Digite **`sair`** a qualquer momento (seja a pedir o número ou a mensagem) para fechar a aplicação em segurança.
-
 ---
 
 ## 📬 Formato das Mensagens
