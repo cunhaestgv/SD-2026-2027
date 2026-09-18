@@ -30,6 +30,9 @@ public class UDPServer{
           int N = Integer.parseInt(dadosRecebidos.substring(0, indexVirgula));
           String mensagemCliente = dadosRecebidos.substring(indexVirgula + 1);
 
+          // 👇 ESTA LINHA ADICIONADA MOSTRA O QUE CHEGOU NO TERMINAL DO SERVIDOR
+          System.out.println(" Recebido pacote N=" + N + " | Mensagem: [" + mensagemCliente + "]");
+
           String respostaTexto;
           // Regra de decisão do servidor
           if (N != L + 1) {
