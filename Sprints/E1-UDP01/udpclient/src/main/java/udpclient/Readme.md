@@ -15,9 +15,8 @@ Este projeto implementa um cliente de rede baseado no protocolo **UDP (User Data
    ```
 3. Execute o programa:
    ```bash
-   java UDPClient
+   java -cp . udpclient.UDPClient na pasta anterior do projeto !!!!
    ```
-
 ---
 
 ## 🛠️ Como Funciona?
