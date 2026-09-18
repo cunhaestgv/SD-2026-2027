@@ -37,11 +37,14 @@ public class UDPServer{
           // Regra de decisão do servidor
           if (N != L + 1) {
             respostaTexto = "waitingfor," + (L + 1);
+            System.out.println("Fora de ordem! Rejeitado. Enviado aviso: waitingfor," + (L + 1));
           } else {
             // Mensagem correta: atualiza o estado L e faz echo da mensagem original
             L = N;
             respostaTexto = mensagemCliente;
+            System.out.println("Em ordem! Estado L atualizado para: " + L);
           }
+          System.out.println("------------------------------------------------");
 
           byte[] replyBuffer = respostaTexto.getBytes();
           DatagramPacket reply = new DatagramPacket(replyBuffer, replyBuffer.length,
@@ -49,8 +52,9 @@ public class UDPServer{
           aSocket.send(reply);
 
         } catch (Exception e) {
+          System.out.println("Recebida mensagem errada ou inválida!");
           // Proteção contra mensagens malformadas para garantir que o servidor nunca pare
-          String erroTexto = "Erro: Mensagem malformada detetada pelo servidor.";
+          String erroTexto = "Erro: Mensagem errada detetada pelo servidor.";
           byte[] errorBuffer = erroTexto.getBytes();
           DatagramPacket reply = new DatagramPacket(errorBuffer, errorBuffer.length,
               request.getAddress(), request.getPort());
