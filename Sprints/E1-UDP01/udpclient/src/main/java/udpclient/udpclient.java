@@ -2,7 +2,7 @@ import java.net.*;
 import java.io.*;
 import java.util.Scanner;
 
-public class udpclient {
+public class UDPClient {
 
   public static void main(String args[]) {
     DatagramSocket aSocket = null;
@@ -15,7 +15,7 @@ public class udpclient {
       InetAddress aHost = InetAddress.getByName("localhost");
       int serverPort = 6789;
 
-      System.out.println("Escolha o modo de numeração inicial:");
+      System.out.println("Escolhe o modo de numeração inicial:");
       System.out.println("1 - Automático (1, 2, 3...)");
       System.out.println("2 - Manual (Define o número a cada mensagem)");
       System.out.print("Opção: ");
