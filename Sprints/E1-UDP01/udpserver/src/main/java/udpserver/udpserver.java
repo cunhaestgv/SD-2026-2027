@@ -12,7 +12,7 @@ public class UDPServer{
     try {
       aSocket = new DatagramSocket(6789);
       byte[] buffer = new byte[1000];
-      System.out.println("Servidor UDP com controlo de ordenação ativo na porta 6789...");
+      System.out.println("Servidor UDP com controlo de ordenacao ativo na porta 6789...");
 
       while (true) {
         DatagramPacket request = new DatagramPacket(buffer, buffer.length);
@@ -24,7 +24,7 @@ public class UDPServer{
           // Processar formato <N>,<Mensagem>
           int indexVirgula = dadosRecebidos.indexOf(",");
           if (indexVirgula == -1) {
-            throw new IllegalArgumentException("Formato inválido");
+            throw new IllegalArgumentException("Formato invalido");
           }
 
           int N = Integer.parseInt(dadosRecebidos.substring(0, indexVirgula));

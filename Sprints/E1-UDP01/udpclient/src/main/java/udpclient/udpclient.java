@@ -16,10 +16,10 @@ public class UDPClient {
       InetAddress aHost = InetAddress.getByName("localhost");
       int serverPort = 6789;
 
-      System.out.println("Escolhe o modo de numeração inicial:");
-      System.out.println("1 - Automático (1, 2, 3...)");
-      System.out.println("2 - Manual (Define o número a cada mensagem)");
-      System.out.print("Opção: ");
+      System.out.println("Escolhe o modo de numeracao inicial:");
+      System.out.println("1 - Automatico (1, 2, 3...)");
+      System.out.println("2 - Manual (Define o numero a cada mensagem)");
+      System.out.print("Opcao: ");
       int modo = Integer.parseInt(scanner.nextLine());
 
       System.out.println("\nCliente pronto. Escreve 'sair' para terminar.");
@@ -28,7 +28,7 @@ public class UDPClient {
         int numeroSequencia = 0;
 
         if (modo == 2) {
-          System.out.print("Indique o número de sequência (N): ");
+          System.out.print("Indica o numero de sequência (N): ");
           String nInput = scanner.nextLine();
           if (nInput.equalsIgnoreCase("sair")) break;
           numeroSequencia = Integer.parseInt(nInput);
@@ -36,7 +36,7 @@ public class UDPClient {
           numeroSequencia = proxAutomatico;
         }
 
-        System.out.print("Digite a mensagem: ");
+        System.out.print("Escreve a mensagem: ");
         String mensagem = scanner.nextLine();
         if (mensagem.equalsIgnoreCase("sair")) break;
 
@@ -62,7 +62,7 @@ public class UDPClient {
         // Reconhecer respostas do tipo waitingfor
         if (resposta.startsWith("waitingfor,")) {
           String proximoEsperado = resposta.split(",")[1];
-          System.out.println("[AVISO SERVIDOR] O servidor perdeu mensagens! Está à espera do número: " + proximoEsperado);
+          System.out.println("[AVISO SERVIDOR] O servidor perdeu mensagens! Esta a espera do numero: " + proximoEsperado);
         } else {
           System.out.println("[ECHO SERVIDOR] Mapeado com sucesso: " + resposta);
         }
@@ -71,7 +71,7 @@ public class UDPClient {
 
     } catch (SocketException e) { System.out.println("Socket: " + e.getMessage());
     } catch (IOException e)     { System.out.println("IO: " + e.getMessage());
-    } catch (NumberFormatException e) { System.out.println("Erro: Entrada numérica inválida. A fechar.");
+    } catch (NumberFormatException e) { System.out.println("Erro: Entrada numerica invalida. A fechar.");
     } finally { 
       if (aSocket != null) aSocket.close(); 
       scanner.close();
