@@ -83,3 +83,9 @@ Se o mesmo datagrama com número $N$ chegar duas vezes seguidas:
 * **Solução:** O servidor deve verificar se $N \le L$. Se o número for menor ou igual ao estado atual, o servidor identifica-o como um duplicado antigo e simplesmente descarta o pacote ou repete o *echo* sem alterar o estado.
 
 #### 2. Perda Silenciosa de Pacotes
+Se o cliente enviar a última mensagem e ela se perder na rede, o servidor nunca recebe nada e fica calado. Como o UDP não tem confirmações (ACKs) nem temporizadores, o cliente assume que correu tudo bem e a perda torna-se permanente e invisível para a aplicação.
+• Solução: Implementar um mecanismo de Timeout no lado do cliente utilizando aSocket.setSoTimeout(tempo). Se o cliente não receber resposta em $X$ milissegundos, assume que houve perda e reenvia o pacote.
+
+### 3. Múltiplos Clientes em Simultâneo
+O design atual guarda apenas uma única variável global L no servidor. Se o Cliente X e o Cliente Y comunicarem ao mesmo tempo, as sequências numéricas vão misturar-se. O Cliente Y enviará o seu número 1, baralhando o contador que já ia a 4 para o Cliente X. O estado atual perde todo o sentido.
+• Solução: O servidor tem de manter uma tabela de estados (um mapa em memória do tipo HashMap<String, Integer>). A chave do mapa será a combinação única do Endereço IP + Porto de cada cliente. Assim que um datagrama chega, o servidor extrai a origem, localiza o estado L específico daquele cliente e aplica a regra de decisão isoladamente.
